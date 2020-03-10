@@ -1,0 +1,149 @@
+{
+  "entity": {
+    "meta": {
+      "uid": null
+    },
+    "data": {
+      "data-id": "data",
+      "integrity-fixed": false,
+      "section": [
+        {
+          "section_id": "s1",
+          "integrity-fixed": false,
+          "section_type": "persist",
+          "list": [
+            {
+              "list-id": "l1",
+              "list-type": "various",
+              "group": [
+                {
+                  "group-id": "g1",
+                  "item": [
+                    {
+                      "item-id": "nomer_osn_protokola",
+                      "label": "Номер основного протокола",
+                      "type": "string",
+                      "doc_proc_context": "always",
+                      "context": "always",
+                      "value": 10
+                    },
+                    {
+                      "item-id": "zayavitelj",
+                      "id": 1,
+                      "source": "С1",
+                      "label": "Заявитель",
+                      "type": "server-select",
+                      "context": "always",
+                      "value": "Объект 1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "list-id": "sotrudnik_otki",
+              "list-type": "similar",
+              "group": [
+                {
+                  "group-id": "g1",
+                  "show_as": "card",
+                  "group-num": null,
+                  "item": [
+                    {
+                      "item-id": "sotrudnik",
+                      "id": null,
+                      "label": "ФИО",
+                      "type": "server-select",
+                      "value": "Кузнецов Андрей Александрович",
+                      "source": "С8"
+                    },
+                    {
+                      "item-id": "dolzhnostj",
+                      "label": "Должность",
+                      "type": "string",
+                      "value": "Главный специалист"
+                    },
+                    {
+                      "item-id": "podpisj",
+                      "date": "01.01.2018",
+                      "label": "Подпись",
+                      "type": "signature",
+                      "transition": "peredatj_na_podpisj_nachalniku_otki"
+                    }
+                  ]
+                },
+                {
+                  "group-id": "g2",
+                  "show_as": "card",
+                  "group-num": null,
+                  "item": [
+                    {
+                      "item-id": "sotrudnik",
+                      "id": null,
+                      "label": "ФИО",
+                      "type": "server-select",
+                      "value": "Смирнов Сергей Сергеевич",
+                      "source": "С8"
+                    },
+                    {
+                      "item-id": "dolzhnostj",
+                      "label": "Должность",
+                      "type": "string",
+                      "value": "Главный специалист"
+                    },
+                    {
+                      "item-id": "podpisj",
+                      "date": "01.01.2018",
+                      "label": "Подпись",
+                      "type": "signature",
+                      "transition": "peredatj_na_podpisj_nachalniku_otki"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "s2",
+          "integrity-fixed": false,
+          "list": [
+            {
+              "list-id": "nachalnik_otki",
+              "list-type": "various",
+              "group": [
+                {
+                  "group_id": "nachalnik_otki",
+                  "show_as": "group",
+                  "item": [
+                    {
+                      "item-id": "sotrudnik",
+                      "id": null,
+                      "label": "ФИО",
+                      "type": "server-select",
+                      "value": "Сергеев Сергей Сергеевич",
+                      "source": "С8"
+                    },
+                    {
+                      "item-id": "dolzhnostj",
+                      "label": "Начальник ОТКИ",
+                      "type": "string",
+                      "value": "Главный специалист"
+                    },
+                    {
+                      "item-id": "podpisj",
+                      "date": "01.01.2018",
+                      "label": "Подпись",
+                      "type": "signature",
+                      "transition": "soglasovatj"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

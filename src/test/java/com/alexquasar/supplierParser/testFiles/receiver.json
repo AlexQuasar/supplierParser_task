@@ -1,0 +1,84 @@
+{
+  "entity": {
+    "meta": {
+      "uid": null
+    },
+    "data": {
+      "data-id": "data",
+      "integrity-fixed": false,
+      "section": [
+        {
+          "section_id": "s2",
+          "integrity-fixed": false,
+          "section_type": "persist",
+          "list": [
+            {
+              "list-id": "l1",
+              "list-type": "various",
+              "group": [
+                {
+                  "group-id": "g1",
+                  "item": [
+                    {
+                      "item-id": "nomer_protokola",
+                      "label": "Номер основного протокола",
+                      "type": "string",
+                      "doc_proc_context": "always",
+                      "context": "always",
+                      "value": 12
+                    },
+                    {
+                      "item-id": "zayavitelj",
+                      "id": 1,
+                      "source": "С1",
+                      "label": "Заявитель",
+                      "type": "server-select",
+                      "context": "always",
+                      "value": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "list-id": "sotrudnik_otki",
+              "group": [
+                {
+                  "group-id": "nachalnik_otki",
+                  "show_as": "group",
+                  "item": [
+                    {
+                      "item-id": "sotrudnik",
+                      "id": null,
+                      "label": "ФИО",
+                      "type": "server-select",
+                      "value": "Иванов Сергей Сергеевич",
+                      "source": "С8"
+                    },
+                    {
+                      "item-id": "dolzhnostj",
+                      "label": "Начальник ОТКИ",
+                      "type": "string",
+                      "value": "Главный специалист"
+                    },
+                    {
+                      "item-id": "podpisj",
+                      "date": "01.01.2018",
+                      "label": "Подпись",
+                      "type": "signature",
+                      "transition": "soglasovatj"
+                    },
+                    {
+                      "item-id": "new",
+                      "value": 123
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
