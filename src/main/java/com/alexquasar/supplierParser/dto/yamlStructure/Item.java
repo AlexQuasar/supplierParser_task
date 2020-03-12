@@ -2,10 +2,7 @@ package com.alexquasar.supplierParser.dto.yamlStructure;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode(exclude = {"date"})
 public class Item {
 
     @JsonProperty("item-id")

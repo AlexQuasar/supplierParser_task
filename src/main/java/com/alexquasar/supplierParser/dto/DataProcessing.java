@@ -2,42 +2,36 @@ package com.alexquasar.supplierParser.dto;
 
 import com.alexquasar.supplierParser.dto.yamlStructure.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DataProcessing {
 
-    private String similarListType = "similar";
+    private final String similarListType = "similar";
 
     public YamlMain joinData(YamlMain supplier, YamlMain receiver) {
-        List<Section> sectionsSupplier = supplier.getEntity().getData().getSections();
-        List<Section> sectionsReceiver = receiver.getEntity().getData().getSections();
+        Set<Section> sectionsSupplier = supplier.getEntity().getData().getSections();
+        Set<Section> sectionsReceiver = receiver.getEntity().getData().getSections();
 
-        List<Item> itemsSupplier = getAllItems(sectionsSupplier, similarListType);
-        List<Item> itemsReceiver = getAllItems(sectionsReceiver, "");
+        Set<Item> itemsSupplier = getAllItems(sectionsSupplier, similarListType);
+        Set<Item> itemsReceiver = getAllItems(sectionsReceiver, "");
         addItems(itemsSupplier, itemsReceiver);
 
-//        Map<String ,List<SectionList>> sectionsListsMap = getSpecificLists(sectionsSupplier, similarListType);
         addSpecificLists(sectionsSupplier, sectionsReceiver);
-
-//        Map<String, List<SectionList>> sectionListsOnId = getSpecificLists(sectionsSupplier, similarListType);
-//        addSpecificLists(sectionListsOnId, sectionsReceiver);
 
         return receiver;
     }
 
-    private List<Item> getAllItems(List<Section> sections, String listTypeFilter) {
-        List<Item> items = new ArrayList<>();
+    private Set<Item> getAllItems(Set<Section> sections, String listTypeFilter) {
+        Set<Item> items = new HashSet<>();
 
         for (Section section : sections) {
-            List<SectionList> sectionLists;
+            Set<SectionList> sectionLists;
 
             if (listTypeFilter.equals("")) {
                 sectionLists = section.getLists();
             } else  {
-                sectionLists = new ArrayList<>();
+                sectionLists = new HashSet<>();
                 for (SectionList sectionList : section.getLists()) {
                     if (!checkEqualsListType(sectionList, listTypeFilter)) {
                         sectionLists.add(sectionList);
@@ -51,7 +45,7 @@ public class DataProcessing {
         return items;
     }
 
-    private void addItems(List<Item> itemsSupplier, List<Item> itemsReceiver) {
+    private void addItems(Set<Item> itemsSupplier, Set<Item> itemsReceiver) {
         for (Item itemSupplier : itemsSupplier) {
             for (Item itemReceiver : itemsReceiver) {
                 if (itemSupplier.getItemId().equals(itemReceiver.getItemId())) {
@@ -61,57 +55,51 @@ public class DataProcessing {
         }
     }
 
-    private  Map<String ,List<SectionList>> getSpecificLists(List<Section> sections, String listType) {
-        Map<String ,List<SectionList>> sectionsListsMap = new HashMap<>();
-
-        for (Section section : sections) {
-            List<SectionList> sectionLists = new ArrayList<>();
-            for (SectionList sectionList : section.getLists()) {
-//                if (checkEqualsListType(sectionList, listType)) {
-                    sectionLists.add(sectionList);
-//                }
-            }
-            sectionsListsMap.put(section.getSection_id(), sectionLists);
-        }
-
-        return sectionsListsMap;
-    }
-
-    private void addSpecificLists(List<Section> sectionsSupplier, List<Section> sectionsReceiver) {
+    private void addSpecificLists(Set<Section> sectionsSupplier, Set<Section> sectionsReceiver) {
         for (Section section : sectionsSupplier) {
             boolean sectionFound = false;
 
-            for (Section sectionReceiver : sectionsReceiver) {
-                if (section.getSection_id().equals(sectionReceiver.getSection_id())) {
-                    setGroupedSection(section, sectionReceiver);
-                    sectionFound = true;
+            if (extendSimilarList(section)) {
+                for (Section sectionReceiver : sectionsReceiver) {
+                    if (section.getSection_id().equals(sectionReceiver.getSection_id())) {
+                        setGroupedSection(section, sectionReceiver);
+                        sectionFound = true;
+                    }
+                }
+
+                if (!sectionFound) {
+                    sectionsReceiver.add(section);
                 }
             }
-
-            if (!sectionFound) {
-                sectionsReceiver.add(section);
-            }
         }
+    }
+
+    private Boolean extendSimilarList(Section section) {
+        long countSimilarList = section.getLists().stream()
+                .filter(i -> i.getListType() != null && i.getListType().equals(similarListType))
+                .count();
+        return countSimilarList > 0L;
     }
 
     private void setGroupedSection(Section section, Section sectionReceiver) {
         for (SectionList sectionList : section.getLists()) {
             boolean listFound = false;
-            boolean isSimilar = false;
 
-            List<SectionList> sectionListsReceiver = sectionReceiver.getLists();
-            for (SectionList sectionListReceiver : sectionListsReceiver) {
-                isSimilar = sectionListReceiver.getListType() != null
-                        && sectionListReceiver.getListType().equals(similarListType);
+            if (sectionList.getListType() != null
+                    && sectionList.getListType().equals(similarListType)) {
+                Set<SectionList> sectionListsReceiver = sectionReceiver.getLists();
+                for (SectionList sectionListReceiver : sectionListsReceiver) {
+                    String listType = sectionListReceiver.getListType();
 
-                if (sectionList.getListId().equals(sectionListReceiver.getListId()) && isSimilar) {
-                    setGroupedGroups(sectionList, sectionListReceiver);
-                    listFound = true;
+                    if (listType.equals(sectionListReceiver.getListId())) {
+                        setGroupedGroups(sectionList, sectionListReceiver);
+                        listFound = true;
+                    }
                 }
-            }
 
-            if (!listFound && isSimilar) {
-                sectionListsReceiver.add(sectionList);
+                if (!listFound) {
+                    sectionListsReceiver.add(sectionList);
+                }
             }
         }
     }
@@ -120,7 +108,7 @@ public class DataProcessing {
         for (Group group : sectionList.getGroups()) {
             boolean groupFound = false;
 
-            List<Group> groups = sectionListReceiver.getGroups();
+            Set<Group> groups = sectionListReceiver.getGroups();
             for (Group groupReceiver : groups) {
                 if (group.getGroupId().equals(groupReceiver.getGroupId())) {
                     setGroupedItems(group, groupReceiver);
@@ -138,7 +126,7 @@ public class DataProcessing {
         for (Item item : group.getItems()) {
             boolean itemFound = false;
 
-            List<Item> items = groupReceiver.getItems();
+            Set<Item> items = groupReceiver.getItems();
             for (Item itemReceiver : items) {
                 if (item.getItemId().equals(itemReceiver.getItemId())) {
                     itemReceiver.setValue(item.getValue());
@@ -151,65 +139,6 @@ public class DataProcessing {
             }
         }
     }
-
-//    private Map<String, List<SectionList>> getSpecificLists(List<Section> sections, String listType) {
-//        Map<String, List<SectionList>> sectionListsOnId = new HashMap<>();
-//
-//        for (Section section : sections) {
-//            for (SectionList sectionList : section.getLists()) {
-//                List<SectionList> sectionLists = new ArrayList<>();
-//                if (checkEqualsListType(sectionList, listType)) {
-//                    sectionLists.add(sectionList);
-//                }
-//
-//                List<SectionList> findSectionLists = sectionListsOnId.get(sectionList.getListId());
-//                if (findSectionLists == null) {
-//                    sectionListsOnId.put(sectionList.getListId(), sectionLists);
-//                } else {
-//                    sectionListsOnId.put(sectionList.getListId(), getGroupsLists(findSectionLists, sectionLists));
-//                }
-//            }
-//        }
-//
-//        return sectionListsOnId;
-//    }
-//
-//    private List<SectionList> getGroupsLists(List<SectionList> findSectionLists, List<SectionList> sectionLists) {
-//        List<SectionList> newSectionLists = new ArrayList<>(findSectionLists);
-//
-//        for (SectionList findSectionList : findSectionLists) {
-//            if (!isListFind(sectionLists, findSectionList)) {
-//                for (SectionList sectionList : sectionLists) {
-//                    if (findSectionList.getListId().equals(sectionList.getListId())) {
-//                        newSectionLists.add(sectionList);
-//                    }
-//                }
-//            }
-//        }
-//
-//        return newSectionLists;
-//    }
-//
-//    private boolean isListFind(List<SectionList> sectionLists, SectionList findSectionList) {
-//        boolean listFind = false;
-//        for (SectionList sectionList : sectionLists) {
-//            if (findSectionList.getListId().equals(sectionList.getListId())) {
-//                listFind = true;
-//            }
-//        }
-//        return listFind;
-//    }
-//
-//    private void addSpecificLists(Map<String, List<SectionList>> sectionListsOnId, List<Section> sectionsReceiver) {
-//        for (Map.Entry<String, List<SectionList>> entry : sectionListsOnId.entrySet()) {
-//            String sectionId = entry.getKey();
-//            List<SectionList> sectionLists = entry.getValue();
-//
-//            for (Section section : sectionsReceiver) {
-//                List<SectionList> sectionListsReceiver = section.getLists();
-//            }
-//        }
-//    }
 
     private Boolean checkEqualsListType(SectionList sectionList, String listType) {
         return sectionList.getListType() != null

@@ -1,17 +1,15 @@
 package com.alexquasar.supplierParser.dto.yamlStructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Group {
 
     @JsonProperty("group-id")
@@ -24,5 +22,5 @@ public class Group {
     private Integer groupNum;
 
     @JsonProperty("item")
-    private List<Item> items;
+    private Set<Item> items;
 }

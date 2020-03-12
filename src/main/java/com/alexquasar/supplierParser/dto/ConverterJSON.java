@@ -54,4 +54,8 @@ public class ConverterJSON {
     public <T> void writeJSON(String filePath, T obj) throws IOException {
         mapper.writeValue(new File(filePath), obj);
     }
+
+    public <T> String writeJSONString(T obj) throws IOException {
+        return mapper.writeValueAsString(obj);
+    }
 }

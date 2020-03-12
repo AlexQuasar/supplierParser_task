@@ -1,15 +1,13 @@
 package com.alexquasar.supplierParser.dto.yamlStructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Entity {
 
     @JsonProperty("meta")

@@ -8,27 +8,9 @@ entity:
     section:
       - section_id: s2
         integrity-fixed: false
-        section_type: persist
         list:
-          - list-id: l1
+          - list-id: nachalnik_otki
             list-type: various
-            group:
-              - group-id: g1
-                item:
-                  - item-id: nomer_protokola
-                    label: Номер основного протокола
-                    type: string
-                    doc_proc_context: always
-                    context: always
-                    value: 12
-                  - item-id: zayavitelj
-                    id: 1
-                    source: С1
-                    label: Заявитель
-                    type: server-select
-                    context: always
-                    value:
-          - list-id: sotrudnik_otki
             group:
               - group-id: nachalnik_otki
                 show_as: group
@@ -48,5 +30,3 @@ entity:
                     label: "Подпись"
                     type: signature
                     transition: soglasovatj
-                  - item-id: new 
-                    value: 123

@@ -1,17 +1,15 @@
 package com.alexquasar.supplierParser.dto.yamlStructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Section {
 
     @JsonProperty("section_id")
@@ -24,5 +22,5 @@ public class Section {
     private String section_type;
 
     @JsonProperty("list")
-    private List<SectionList> lists;
+    private Set<SectionList> lists;
 }
