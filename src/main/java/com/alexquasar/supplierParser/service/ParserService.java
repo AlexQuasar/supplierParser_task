@@ -19,15 +19,19 @@ public class ParserService implements Parser {
     private ConverterJSON converterJSON = new ConverterJSON();
     private DataProcessing dataProcessing = new DataProcessing();
 
+    public String parse(byte[] supplierBytes, byte[] receiverBytes) {
+        return parse(new String(supplierBytes), new String(receiverBytes));
+    }
+
     @Override
-    public String parse(File supplierFile, File receiverFile) {
+    public String parse(String yamlSupplier, String yamlReceiver) {
         YamlMain supplier;
         YamlMain receiver;
         YamlMain resultPattern;
 
         try {
-            supplier = converterJSON.convertYAMLToJSON(supplierFile, YamlMain.class);
-            receiver = converterJSON.convertYAMLToJSON(receiverFile, YamlMain.class);
+            supplier = converterJSON.convertYAMLToJSON(yamlSupplier, YamlMain.class);
+            receiver = converterJSON.convertYAMLToJSON(yamlReceiver, YamlMain.class);
             resultPattern = converterJSON.convertYAMLToJSON(getFileResultPattern(), YamlMain.class);
         } catch (IOException ex) {
             throw new ServiceException("can't read files", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -35,12 +39,11 @@ public class ParserService implements Parser {
 
         YamlMain resultJoin = dataProcessing.joinData(supplier, receiver);
 
-//        if (!resultJoin.equals(resultPattern)) {
-//            throw new ServiceException("result object doesn't match schema pattern", HttpStatus.CONFLICT);
-//        }
+        if (!resultJoin.equals(resultPattern)) {
+            throw new ServiceException("result object doesn't match schema pattern", HttpStatus.CONFLICT);
+        }
 
         try {
-//            converterJSON.writeJSON("./directoryTestFiles/result.json", resultJoin); // filePath not normal!
             return converterJSON.writeJSONString(resultJoin);
         } catch (IOException ex) {
             throw new ServiceException("can't write files", HttpStatus.INTERNAL_SERVER_ERROR);

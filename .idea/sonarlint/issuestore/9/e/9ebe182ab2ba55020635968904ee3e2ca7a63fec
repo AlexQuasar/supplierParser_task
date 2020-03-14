@@ -1,21 +1,4 @@
 
-isquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(³º¸8æÜØÎ‹.
-nsquid:CommentedOutCodeLineV"<This block of commented-out lines of code should be removed.(é÷œºúÿÿÿÿ8æÜØÎ‹.
-isquid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(ù¯ÛŸ8æÜØÎ‹.
-osquid:CommentedOutCodeLine‚"<This block of commented-out lines of code should be removed.(Ÿ¿®æûÿÿÿÿ8æÜØÎ‹.
-jsquid:CommentedOutCodeLineˆ"<This block of commented-out lines of code should be removed.(Ãìëì8æÜØÎ‹.
-isquid:CommentedOutCodeLineD"<This block of commented-out lines of code should be removed.(ñÙÎ‚8æÜØÎ‹.
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ÍÆ¶ÿÿÿÿÿ
-[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8®¦ÒÎ‹.
-nsquid:CommentedOutCodeLine7"<This block of commented-out lines of code should be removed.(ãœ¾äøÿÿÿÿ8µè·Î‹.
-nsquid:CommentedOutCodeLineB"<This block of commented-out lines of code should be removed.(µœ¥éùÿÿÿÿ8æÜØÎ‹.
-nsquid:CommentedOutCodeLinei"<This block of commented-out lines of code should be removed.(Á»îÖýÿÿÿÿ8æÜØÎ‹.
-nsquid:CommentedOutCodeLinem"<This block of commented-out lines of code should be removed.(ûöôÅÿÿÿÿÿ8æÜØÎ‹.
-isquid:CommentedOutCodeLineR"<This block of commented-out lines of code should be removed.(­ì¯8æÜØÎ‹.
-isquid:CommentedOutCodeLines"<This block of commented-out lines of code should be removed.(’…Ð€8æÜØÎ‹.
-nsquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(£‘ƒªýÿÿÿÿ8µè·Î‹.
-hsquid:CommentedOutCodeLine["<This block of commented-out lines of code should be removed.(ÐÜ’8æÜØÎ‹.
-isquid:CommentedOutCodeLine}"<This block of commented-out lines of code should be removed.(êãÉ¹8æÜØÎ‹.
-hsquid:CommentedOutCodeLineH"<This block of commented-out lines of code should be removed.(ÈÔ¡X8æÜØÎ‹.
-nsquid:CommentedOutCodeLine?"<This block of commented-out lines of code should be removed.(¸ÄÎûÿÿÿÿ8æÜØÎ‹.
-isquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ÂÛ¥8æÜØÎ‹.
+nsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(ƒ»ºóùÿÿÿÿ8äÚž§.
+Usquid:S1481"2Remove this unused "resultPattern" local variable.(®ç¿ëøÿÿÿÿ8äÚž§.

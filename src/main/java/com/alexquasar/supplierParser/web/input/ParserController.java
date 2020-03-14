@@ -2,10 +2,9 @@ package com.alexquasar.supplierParser.web.input;
 
 import com.alexquasar.supplierParser.service.ParserService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.File;
 
 @RestController
 @RequestMapping("/supplierParser")
@@ -18,7 +17,7 @@ public class ParserController {
     }
 
     @PostMapping("/parse")
-    public String parse() {
-        return parserService.parse(new File(""), new File("")); //block
+    public String parse(@RequestBody byte[] supplierBytes, @RequestBody byte[] receiverBytes) {
+        return parserService.parse(supplierBytes, receiverBytes);
     }
 }

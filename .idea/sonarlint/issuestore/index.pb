@@ -55,3 +55,10 @@ q
 Asrc/test/java/com/alexquasar/supplierParser/testFiles/result.json,f\6\f61c52d57beb4b75f10d9cab40f7e7e2093705dd
 s
 Csrc/main/java/com/alexquasar/supplierParser/dto/DataProcessing.java,f\8\f8e79f9fa0ead525fa2bbd07365e97749f8a95f4
+{
+Ksrc/main/java/com/alexquasar/supplierParser/web/input/ParserController.java,6\0\606f4f36feab72890b342a3be34a0e8aa9f5555f
+P
+ src/main/resources/rezultat.yaml,9\f\9f0555ce874bf6c5a2466b2de71a153cfe46fe0f
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
