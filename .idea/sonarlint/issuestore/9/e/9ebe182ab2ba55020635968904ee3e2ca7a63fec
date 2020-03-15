@@ -1,6 +1,2 @@
 
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ÍÆ¶ÿÿÿÿÿ
-Hsquid:S00108")Either remove or fill this block of code.(±ºÎô8Œ÷ÁË.
-Gsquid:S1481")Remove this unused "file" local variable.(±ºÎô8Œ÷ÁË.
-Tsquid:S1481"1Remove this unused "supplierFile" local variable.(ğ†ößúÿÿÿÿ8Œ÷ÁË.
-Tsquid:S1481"1Remove this unused "receiverFile" local variable.(…•Š»øÿÿÿÿ8Œ÷ÁË.
