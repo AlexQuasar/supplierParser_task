@@ -1,4 +1,6 @@
 
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ÍÆ¶ÿÿÿÿÿ
-nsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(ƒ»ºóùÿÿÿÿ8äÚž§.
-Usquid:S1481"2Remove this unused "resultPattern" local variable.(®ç¿ëøÿÿÿÿ8äÚž§.
+Hsquid:S00108")Either remove or fill this block of code.(±ºÎô8Œ÷ÁË.
+Gsquid:S1481")Remove this unused "file" local variable.(±ºÎô8Œ÷ÁË.
+Tsquid:S1481"1Remove this unused "supplierFile" local variable.(ð†ößúÿÿÿÿ8Œ÷ÁË.
+Tsquid:S1481"1Remove this unused "receiverFile" local variable.(…•Š»øÿÿÿÿ8Œ÷ÁË.

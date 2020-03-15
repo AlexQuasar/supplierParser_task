@@ -62,3 +62,5 @@ P
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+
+Osrc/test/java/com/alexquasar/supplierParser/web/input/ParserControllerTest.java,b\6\b65eef2d9005fe4010b72321529191f66fa5b532
