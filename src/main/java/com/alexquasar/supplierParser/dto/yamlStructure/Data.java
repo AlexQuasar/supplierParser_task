@@ -45,6 +45,6 @@ public class Data {
             }
         }
 
-        return equals;
+        return equals && this.sections.size() == sections.size();
     }
 }

@@ -49,6 +49,6 @@ public class Section {
             }
         }
 
-        return equals;
+        return equals && this.lists.size() == lists.size();
     }
 }

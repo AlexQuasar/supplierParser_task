@@ -45,6 +45,6 @@ public class SectionList {
             }
         }
 
-        return equals;
+        return equals && this.groups.size() == groups.size();
     }
 }

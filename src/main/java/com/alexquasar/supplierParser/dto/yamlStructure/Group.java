@@ -49,6 +49,6 @@ public class Group {
             }
         }
 
-        return equals;
+        return equals && this.items.size() == items.size();
     }
 }

@@ -84,14 +84,14 @@ public class ParserControllerTest {
 
     @SneakyThrows
     private List<MockMultipartFile> getMultipartFiles() {
-        String contentType = "text/plain";
+        String contentType = "text/plain;charset=UTF-8";
 
         Path supplier = Paths.get(supplierPath);
         Path receiver = Paths.get(receiverPath);
 
-        MockMultipartFile supplerFile = new MockMultipartFile("postavshhik", supplier.toFile().getName(),
+        MockMultipartFile supplerFile = new MockMultipartFile("file", supplier.toFile().getName(),
                 contentType, Files.readAllBytes(supplier));
-        MockMultipartFile receiverFile = new MockMultipartFile("priemshhik", receiver.toFile().getName(),
+        MockMultipartFile receiverFile = new MockMultipartFile("file", receiver.toFile().getName(),
                 contentType, Files.readAllBytes(receiver));
 
         return Arrays.asList(supplerFile, receiverFile);
