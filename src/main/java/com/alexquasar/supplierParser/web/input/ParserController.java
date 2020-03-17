@@ -20,7 +20,7 @@ public class ParserController {
     }
 
     @PostMapping("/parse")
-    public String parse(@RequestParam(value = "file", required = false) List<MultipartFile> files) {
+    public String parse(@RequestParam(value = "yaml", required = false) List<MultipartFile> files) {
         return parserService.parse(files);
     }
 }

@@ -69,8 +69,7 @@ public class ParserControllerTest {
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.multipart(parse)
                 .file(files.get(0))
-                .file(files.get(1))
-                .accept(MediaType.APPLICATION_JSON))
+                .file(files.get(1)))
         .andExpect(status().isOk())
         .andReturn();
 
@@ -84,14 +83,14 @@ public class ParserControllerTest {
 
     @SneakyThrows
     private List<MockMultipartFile> getMultipartFiles() {
-        String contentType = "text/plain;charset=UTF-8";
+        String contentType = "text/plain";
 
         Path supplier = Paths.get(supplierPath);
         Path receiver = Paths.get(receiverPath);
 
-        MockMultipartFile supplerFile = new MockMultipartFile("file", supplier.toFile().getName(),
+        MockMultipartFile supplerFile = new MockMultipartFile("yaml", supplier.toFile().getName(),
                 contentType, Files.readAllBytes(supplier));
-        MockMultipartFile receiverFile = new MockMultipartFile("file", receiver.toFile().getName(),
+        MockMultipartFile receiverFile = new MockMultipartFile("yaml", receiver.toFile().getName(),
                 contentType, Files.readAllBytes(receiver));
 
         return Arrays.asList(supplerFile, receiverFile);
