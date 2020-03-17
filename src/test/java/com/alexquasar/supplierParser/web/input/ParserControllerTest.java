@@ -48,9 +48,9 @@ public class ParserControllerTest {
     String supplierParser = "/supplierParser";
 
     ConverterJSON converterJSON = new ConverterJSON();
-    final String directoryPath = ".";///src/test/java/com.alexquasar.supplierParser/testFiles";
-    final String supplierPath = directoryPath + "/directoryTestFiles/postavshhik.yaml";
-    final String receiverPath = directoryPath + "/directoryTestFiles/priemshhik.yaml";
+    final String directoryPath = "./src/test/java/com/alexquasar/supplierParser/testFiles";
+    final String supplierPath = directoryPath + "/postavshhik.yaml";
+    final String receiverPath = directoryPath + "/priemshhik.yaml";
     final String resultPath = "rezultat.yaml";
 
     @Before

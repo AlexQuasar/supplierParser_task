@@ -25,7 +25,7 @@ entity:
                     id: 1
                     source: С1
                     label: Заявитель
-                    type: server-select       # вторая очередь
+                    type: server-select
                     context: always
                     value: Объект 1
           - list-id: sotrudnik_otki
@@ -33,7 +33,7 @@ entity:
             group:
               - group-id: g1
                 show_as: card
-                group-num:  # генерируется автоматически
+                group-num:
                 item:
                   - item-id: sotrudnik
                     id:
@@ -52,7 +52,7 @@ entity:
                     transition: peredatj_na_podpisj_nachalniku_otki
               - group-id: g2
                 show_as: card
-                group-num:  # генерируется автоматически
+                group-num:
                 item:
                   - item-id: sotrudnik
                     id:
@@ -75,7 +75,7 @@ entity:
           - list-id: nachalnik_otki
             list-type: various
             group:
-              - group_id: nachalnik_otki
+              - group-id: nachalnik_otki
                 show_as: group
                 item:
                   - item-id: sotrudnik
